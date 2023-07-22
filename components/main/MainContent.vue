@@ -34,7 +34,9 @@ const containerClass = computed(() => {
       <div flex justify-between px5 py2 :class="{ 'xl:hidden': $route.name !== 'tag' }" class="native:xl:flex" border="b base">
         <div flex gap-3 items-center :overflow-hidden="!noOverflowHidden ? '' : false" py2 w-full>
           <NuxtLink
-            v-if="backOnSmallScreen || back" flex="~ gap1" items-center btn-text p-0 xl:hidden
+            v-if="backOnSmallScreen || back" flex="~ gap1" items-center btn-text p-2 rounded-full xl:hidden
+            transition-100
+            hover="bg-active"
             :aria-label="$t('nav.back')"
             @click="$router.go(-1)"
           >
