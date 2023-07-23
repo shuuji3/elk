@@ -31,14 +31,16 @@ const containerClass = computed(() => {
       bg="[rgba(var(--rgb-bg-base),0.7)]"
       class="native:lg:w-[calc(100vw-5rem)] native:xl:w-[calc(135%+(100vw-1200px)/2)]"
     >
-      <div flex justify-between px5 py2 :class="{ 'xl:hidden': $route.name !== 'tag' }" class="native:xl:flex" border="b base">
-        <div flex gap-3 items-center :overflow-hidden="!noOverflowHidden ? '' : false" py2 w-full>
+      <div flex justify-between px3 py2 :class="{ 'xl:hidden': $route.name !== 'tag' }" class="native:xl:flex" border="b base">
+        <div flex gap-2 items-center :overflow-hidden="!noOverflowHidden ? '' : false" py1 w-full>
           <NuxtLink
             v-if="backOnSmallScreen || back" flex="~ gap1" items-center btn-text p-2 rounded-full xl:hidden
             transition-100
             hover="bg-active"
             :aria-label="$t('nav.back')"
+            tabindex="0"
             @click="$router.go(-1)"
+            @keyup.enter.space="$router.go(-1)"
           >
             <div i-ri:arrow-left-line class="rtl-flip" />
           </NuxtLink>
