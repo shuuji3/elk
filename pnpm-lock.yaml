@@ -4,14 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  unstorage: ^1.9.0
-
-patchedDependencies:
-  nuxt-security@0.13.1:
-    hash: bd6cmp7ukwwiwrxafbbotwkihe
-    path: patches/nuxt-security@0.13.1.patch
-
 importers:
 
   .:
@@ -321,6 +313,15 @@ importers:
       nuxt:
         specifier: ^3.6.5
         version: 3.6.5(@types/node@20.3.3)(eslint@8.46.0)(idb-keyval@6.2.1)(rollup@3.26.0)(typescript@5.1.6)(vue-tsc@1.8.8)
+
+  locales:
+    dependencies:
+      '@types/diff-match-patch':
+        specifier: ^1.0.32
+        version: 1.0.32
+      diff-match-patch:
+        specifier: ^1.0.5
+        version: 1.0.5
 
 packages:
 
@@ -3862,6 +3863,10 @@ packages:
       '@types/ms': 0.7.31
     dev: true
 
+  /@types/diff-match-patch@1.0.32:
+    resolution: {integrity: sha512-bPYT5ECFiblzsVzyURaNhljBH2Gh1t9LowgUwciMrNAhFewLkHT2H0Mto07Y4/3KCOGZHRQll3CTtQZ0X11D/A==}
+    dev: false
+
   /@types/eslint-scope@3.7.4:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
@@ -6983,6 +6988,10 @@ packages:
 
   /devalue@4.3.2:
     resolution: {integrity: sha512-KqFl6pOgOW+Y6wJgu80rHpo2/3H07vr8ntR9rkkFIRETewbf5GaYYcakYfiKz89K+sLsuPkQIZaXDMjUObZwWg==}
+
+  /diff-match-patch@1.0.5:
+    resolution: {integrity: sha512-IayShXAgj/QMXgB0IWmKx+rOPuGMhqm5w6jvFxmVenXKIzRqTAAsbBPT3kWQeGANj3jGgvcvv4yK6SxqYmikgw==}
+    dev: false
 
   /diff-sequences@29.4.3:
     resolution: {integrity: sha512-ofrBgwpPhCD85kMKtE9RYFFq6OC1A89oW2vvgWZNCwxrUpRUILopY7lsYyMDSjc8g6U6aiO0Qubg6r4Wgt5ZnA==}
