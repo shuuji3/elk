@@ -26,6 +26,9 @@ function reverseHistory(items: mastodon.v1.StatusEdit[]) {
         px="0.5"
         @click="showHistory(item)"
       >
+        <!-- TODO: diff item and previous item for show edited -->
+        <!-- @click="showHistory(item, prevItem or items[index-1])" ? -->
+
         {{ getDisplayName(item.account) }}
 
         <template v-if="index === items.length - 1">
