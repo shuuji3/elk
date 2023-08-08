@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { mastodon } from 'masto'
+import diffMatchPatch from 'diff-match-patch'
 
 const {
   status,
@@ -11,13 +12,47 @@ const {
   withAction?: boolean
 }>()
 
+/**
+ * Convert a diff array into a pretty HTML report.
+ * @param {!Array.<!diff_match_patch.Diff>} diffs Array of diff tuples.
+ * @return {string} HTML representation.
+ */
+function diffToHtml(diffs: diff_match_patch.Diff[]): string {
+  const html = []
+  const pattern_amp = /&/g
+  const pattern_lt = /</g
+  const pattern_gt = />/g
+  const pattern_para = /\n/g
+  for (let x = 0; x < diffs.length; x++) {
+    const op = diffs[x][0] // Operation (insert, delete, equal)
+    const data = diffs[x][1] // Text of change.
+    const text = data.replace(pattern_amp, '&amp;').replace(pattern_lt, '&lt;')
+      .replace(pattern_gt, '&gt;').replace(pattern_para, '&para;<br>')
+    switch (op) {
+      case DIFF_INSERT:
+        html[x] = `<ins style="background:#e6ffe6;">${text}</ins>`
+        break
+      case DIFF_DELETE:
+        html[x] = `<del style="background:#ffe6e6;">${text}</del>`
+        break
+      case DIFF_EQUAL:
+        html[x] = `<span>${text}</span>`
+        break
+    }
+  }
+  return html.join('')
+}
+
 const { translation } = useTranslation(status, getLanguageCode())
 
 const emojisObject = useEmojisFallback(() => status.emojis)
 const vnode = $computed(() => {
-  if (!status.content)
+  const dmp = new diffMatchPatch.diff_match_patch()
+  const html = dmp.status.content
+
+  if (!html)
     return null
-  const vnode = contentToVNode(status.content, {
+  const vnode = contentToVNode(html, {
     emojis: emojisObject.value,
     mentions: 'mentions' in status ? status.mentions : undefined,
     markdown: true,
