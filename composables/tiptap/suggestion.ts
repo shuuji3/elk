@@ -65,7 +65,7 @@ export const TiptapEmojiSuggestion: Partial<SuggestionOptions> = {
     const lowerCaseQuery = query.toLowerCase()
 
     const { data } = await useAsyncData<EmojiMartData>('emoji-data', () => import('@emoji-mart/data').then(r => r.default as EmojiMartData))
-    const emojis: Emoji[] = Object.values(data.value.emojis).filter(({ id }) => id.toLowerCase().startsWith(lowerCaseQuery))
+    const emojis: Emoji[] = Object.values(data.value?.emojis || []).filter(({ id }) => id.toLowerCase().startsWith(lowerCaseQuery))
 
     const customEmojis: CustomEmoji[] = currentCustomEmojis.value.emojis
       .filter(emoji => emoji.shortcode.toLowerCase().startsWith(lowerCaseQuery))
