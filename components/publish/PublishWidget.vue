@@ -112,6 +112,10 @@ const expiresInDefaultOptionIndex = 2
 
 const scheduleDateTime = ref('')
 
+watchEffect(() => {
+  draft.value.params.scheduledAt = scheduleDateTime.value
+})
+
 const characterCount = computed(() => {
   const text = htmlToText(editor.value?.getHTML() || '')
 
