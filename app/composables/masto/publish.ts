@@ -140,7 +140,7 @@ export function usePublish(options: {
         // ref. Mastodon documentation - https://docs.joinmastodon.org/methods/statuses/#create
         return
 
-      if (scheduledAt)
+      if ('scheduled_at' in status)
         // When created a scheduled post, it returns `mastodon.v1.ScheduledStatus` instead
         // We want to return only Status, which will be used to route to the posted status page
         // ref. Mastodon documentation - https://docs.joinmastodon.org/methods/statuses/#create
