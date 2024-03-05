@@ -16,5 +16,7 @@ export default antfu({
       message: 'Use NuxtLink instead.',
     }],
     'n/prefer-global/process': 'off',
+    // TODO: temporary disabled for eslint-config upgrade
+    'node/prefer-global/process': 'off',
   },
 })

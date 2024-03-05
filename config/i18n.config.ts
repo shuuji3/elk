@@ -14,7 +14,7 @@ export default defineI18nConfig(() => {
     missingWarn: true,
     datetimeFormats,
     numberFormats,
-    // eslint-disable-next-line @typescript-eslint/comma-dangle
+    // eslint-disable-next-line style/comma-dangle
     pluralRules
   }
 })
