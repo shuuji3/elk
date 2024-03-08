@@ -164,6 +164,7 @@ watch(shouldLoadAttachment, () => {
       <button
         type="button"
         relative
+        @click_="video.paused ? video.play() : video.pause()"
         @click="!shouldLoadAttachment ? loadAttachment() : null"
       >
         <video
@@ -247,15 +248,17 @@ watch(shouldLoadAttachment, () => {
         />
       </button>
     </template>
+    <!-- ALT/GIF badge block -->
     <div
-      v-if="attachment.description && !getPreferences(userSettings, 'hideAltIndicatorOnPosts')" :class="isAudio ? [] : [
+      :class="isAudio ? [] : [
         'absolute left-2',
         isVideo ? 'top-2' : 'bottom-2',
       ]"
+      flex gap-1 items-end
     >
-      <VDropdown :distance="6" placement="bottom-start">
+      <VDropdown v-if="attachment.description && !getPreferences(userSettings, 'hideAltIndicatorOnPosts')" :distance="6" placement="bottom-start">
         <button
-          font-bold text-sm
+          flex font-bold text-sm
           :class="isAudio
             ? 'rounded-full h-15 w-15 btn-outline border-base text-secondary hover:bg-active hover:text-active'
             : 'rounded-1 bg-black/65 text-white hover:bg-black px1.2 py0.2'"
@@ -281,6 +284,14 @@ watch(shouldLoadAttachment, () => {
           </div>
         </template>
       </VDropdown>
+      <span
+        v-if="type === 'gifv' && !getPreferences(userSettings, 'hideGifIndicatorOnPosts')"
+        font-bold text-sm
+        h-20px rounded-1 text-white hover:bg-black px1.2 py0.2
+        class="bg-black/65"
+      >
+        GIF
+      </span>
     </div>
   </div>
 </template>
