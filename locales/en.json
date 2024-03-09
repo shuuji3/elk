@@ -716,6 +716,8 @@
     "explore_links_intro": "These news stories are being talked about by people on this and other servers of the decentralized network right now.",
     "explore_posts_intro": "These posts from this and other servers in the decentralized network are gaining traction on this server right now.",
     "explore_tags_intro": "These hashtags are gaining traction among people on this and other servers of the decentralized network right now.",
+    "hashtags_intro": "You haven't followed any hashtags yet. Following hashtags lets you see the newest posts about those topics appear in your home timeline and in this list. Find popular hashtags on {0}.",
+    "hashtags_intro_link": "\"Hashtags\" tab on the Explore page",
     "open_editor_tools": "Editor tools",
     "pick_an_icon": "Pick an icon",
     "publish_failed": "Close failed messages at the top of editor to republish posts",
