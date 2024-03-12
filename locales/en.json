@@ -740,7 +740,7 @@
     "private_desc": "Visible for followers only",
     "public": "Public",
     "public_desc": "Visible for all",
-    "unlisted": "Unlisted",
+    "unlisted": "Quiet Public",
     "unlisted_desc": "Visible for all, but opted-out of discovery features"
   }
 }
