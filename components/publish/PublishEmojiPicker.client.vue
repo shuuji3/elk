@@ -25,7 +25,7 @@ async function openEmojiPicker() {
   else {
     const [Picker, dataPromise, i18n] = await Promise.all([
       import('emoji-mart').then(({ Picker }) => Picker),
-      import('@emoji-mart/data/sets/14/twitter.json').then((r: any) => r.default).catch(() => {}),
+      import('@emoji-mart/data/sets/14/google.json').then((r: any) => r.default).catch(() => {}),
       importEmojiLang(locale.value.split('-')[0]),
     ])
 
@@ -36,7 +36,7 @@ async function openEmojiPicker() {
           ? emit('select', native)
           : emit('selectCustom', { src, alt, 'data-emoji-id': name })
       },
-      set: 'twitter',
+      set: 'google',
       theme: colorMode,
       custom: customEmojisData.value,
       i18n,
