@@ -24,6 +24,9 @@ importers:
       '@fnando/sparkline':
         specifier: ^0.3.10
         version: 0.3.10
+      '@iconify-emoji/noto':
+        specifier: ^1.0.2
+        version: 1.0.2
       '@iconify-emoji/twemoji':
         specifier: ^1.0.2
         version: 1.0.2
@@ -2458,6 +2461,10 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.2:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
+
+  /@iconify-emoji/noto@1.0.2:
+    resolution: {integrity: sha512-PK4GLqXf36fkB/rbfm6j/vfsVZ1e7byJdJCUvkOIu5iwS+2JloAi6wUlgb2cyx0W1Q7kTOgt8kj/tHADPP3uFw==}
+    dev: false
 
   /@iconify-emoji/twemoji@1.0.2:
     resolution: {integrity: sha512-C4W6ov4BkDXiVU3GzyqyVo8SBbU21KivXnZERgAnrYZEKjuiI3JwPDnu9oVJPsUkNI/Q4SM8iVnXjGW6kxt9DQ==}
