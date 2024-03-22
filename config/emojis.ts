@@ -1,13 +1,13 @@
 // @unimport-disabled
-import { emojiFilename, emojiPrefix, emojiRegEx } from '@iconify-emoji/twemoji'
+import { emojiFilename, emojiPrefix, emojiRegEx } from '@iconify-emoji/noto'
 import type { EmojiRegexMatch } from '@iconify/utils/lib/emoji/replace/find'
 import { getEmojiMatchesInText } from '@iconify/utils/lib/emoji/replace/find'
 
 // Re-export everything from package
-export * from '@iconify-emoji/twemoji'
+export * from '@iconify-emoji/noto'
 
 // Package name
-export const iconifyEmojiPackage = '@iconify-emoji/twemoji'
+export const iconifyEmojiPackage = '@iconify-emoji/noto'
 
 export function getEmojiAttributes(input: EmojiRegexMatch | string) {
   const match = typeof input === 'string'
