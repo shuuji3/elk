@@ -30,6 +30,12 @@ useHydratedHead({
         </p>
         <SettingsThemeColors />
       </div>
+      <div space-y-2>
+        <p font-medium>
+          {{ $t('settings.interface.nav_buttons') }}
+        </p>
+        <SettingsNavButtons />
+      </div>
     </div>
   </MainContent>
 </template>
