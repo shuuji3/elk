@@ -1,25 +1,87 @@
 <script setup lang="ts">
 // only one icon can be lit up at the same time
+import type { Component } from 'vue'
 import { NavButtonExplore, NavButtonFederated, NavButtonHome, NavButtonLocal, NavButtonMention, NavButtonNotification, NavButtonSearch } from '#components'
 
 const moreMenuVisible = ref(false)
 
-const navButtons = currentUser.value
-  ? [NavButtonHome, NavButtonSearch, NavButtonNotification, NavButtonMention]
-  : [NavButtonExplore, NavButtonLocal, NavButtonFederated]
+interface NavButton {
+  name: string
+  component: Component
+}
+
+const navButtons: NavButton[] = currentUser.value
+  ? [
+      {
+        name: 'home',
+        component: NavButtonHome,
+      },
+      {
+        name: ' search',
+        component: NavButtonSearch,
+      },
+      {
+        name: ' notification',
+        component: NavButtonNotification,
+      },
+      {
+        name: ' mention',
+        component: NavButtonMention,
+      },
+    ]
+  : [
+      {
+        name: 'explore',
+        component: NavButtonExplore,
+      },
+      {
+        name: 'local',
+        component: NavButtonLocal,
+      },
+      {
+        name: 'federated',
+        component: NavButtonFederated,
+      },
+    ]
 </script>
 
 <template>
   <nav
-    h-14 border="t base" flex flex-row text-xl
-    of-y-scroll scrollbar-hide overscroll-none
+    h-14
+    border="t base"
+    flex
+    flex-row
+    text-xl
+    of-y-scroll
+    scrollbar-hide
+    overscroll-none
     class="after-content-empty after:(h-[calc(100%+0.5px)] w-0.1px pointer-events-none)"
   >
     <!-- These weird styles above are used for scroll locking, don't change it unless you know exactly what you're doing. -->
-    <Component :is="button" v-for="button in navButtons" :key="button.name" :active-class="moreMenuVisible ? '' : 'text-primary'" />
-    <NavBottomMoreMenu v-slot="{ toggleVisible, show }" v-model="moreMenuVisible" flex flex-row items-center place-content-center h-full flex-1 cursor-pointer>
+    <Component
+      :is="button.component"
+      v-for="button in navButtons"
+      :key="button.name"
+      :active-class="moreMenuVisible ? '' : 'text-primary'"
+    />
+    <NavBottomMoreMenu
+      v-slot="{ toggleVisible, show }"
+      v-model="moreMenuVisible"
+      flex
+      flex-row
+      items-center
+      place-content-center
+      h-full
+      flex-1
+      cursor-pointer
+    >
       <button
-        flex items-center place-content-center h-full flex-1 class="select-none"
+        flex
+        items-center
+        place-content-center
+        h-full
+        flex-1
+        class="select-none"
         :class="show ? '!text-primary' : ''"
         aria-label="More menu"
         @click="toggleVisible"
